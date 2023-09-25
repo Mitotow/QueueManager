@@ -19,35 +19,26 @@ This project is a simple queue manager implemented in C# using .NET 7.0. It allo
 
 2. Navigate to folder
    
-   ```bash```
-   
+   ```bash
    cd QueueManager
-   
-   ```
-   
    ```
 
 3. Build the projet
-   
-   ```bash```
+
+   ```bash
    dotnet build
-   
-   ```
-   
    ```
 
 4. Run the applucation
    
-   ```bash```
+   ```bash
    dotnet run
-   
    ```
    or
    
    ```bash
    ./bin/release/net7.0/QueueManager
    ```
-
 5. Follow the on-screen instructions to add, remove, or view people in the queue
 
 ## Features
@@ -57,8 +48,6 @@ This project is a simple queue manager implemented in C# using .NET 7.0. It allo
 * **Remove a Person from the Queue:** You have the option to remove the first person from the queue.
 
 * **View Queue Contents:** You can check the list of people currently in the queue.
-
-# 
 
 ## License
 
