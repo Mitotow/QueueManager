@@ -29,7 +29,7 @@ This project is a simple queue manager implemented in C# using .NET 7.0. It allo
    dotnet build
    ```
 
-4. Run the applucation
+4. Run the application
    
    ```bash
    dotnet run
