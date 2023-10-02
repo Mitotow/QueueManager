@@ -7,17 +7,18 @@ namespace QueueManager.controllers;
 public class Add : ICommand
 {
     public string Name { get; set; } = "Add";
-    public Queue<Person> Queue { get; set; }
+    public QueueModel Manager { get; set; }
     public Display Display { get; set; }
 
-    public Add(Queue<Person> queue, Display disp)
+    public Add(Display disp)
     {
-        Queue = queue;
+        Manager = QueueModel.GetInstance();
         Display = disp;
     }
     
     public void OnCommand()
     {
+        Queue<Person> queue = Manager.GetQueue();
         bool firstIteration = true;
         while (true)
         {
@@ -34,7 +35,7 @@ public class Add : ICommand
 
             Person person = new Person(args[0], args[1]);
             Display.Print($"You added {person} to the queue");
-            Queue.Enqueue(person);
+            queue.Enqueue(person);
             break;
         }
     }

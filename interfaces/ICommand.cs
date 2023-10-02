@@ -6,7 +6,7 @@ namespace QueueManager.interfaces;
 public interface ICommand
 {
     string Name { get; set; }
-    Queue<Person> Queue { get; set; }
+    QueueModel Manager { get; set; }
     Display Display { get; set; }
     
     void OnCommand();

@@ -1,3 +1,5 @@
+using QueueManager.models;
+
 namespace QueueManager.views;
 
 public class Display
@@ -21,6 +23,15 @@ public class Display
     {
         Console.Write("$ ");
         return Console.ReadLine();
+    }
+
+    public void PrintQueue(Queue<Person> queue)
+    {
+        string message = "";
+        Person[] arr = queue.ToArray();
+        for (int i = 0; i < arr.Length; i++)
+            message += $"{i+1}. {arr[i]}\n";
+        Print(message, false);
     }
 
     public ConsoleKeyInfo GetUserKey() => Console.ReadKey();
