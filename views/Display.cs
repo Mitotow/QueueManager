@@ -10,7 +10,7 @@ public class Display
     {
         string message = "===== Queue Manager =====\n";
         for (var i = 0; i < cmdsName.Length; i++)
-            message += (i == SelectedCommand ? "--> " : "    ") + $"{cmdsName[i]}\n";
+            message += (i == SelectedCommand ? "* " : "  ") + $"{cmdsName[i]}\n";
         Print(message);
     }
 
@@ -20,7 +20,7 @@ public class Display
         Console.WriteLine(message);
     }
 
-    public string? GetUserInput()
+    public static string? GetUserInput()
     {
         Console.Write("$ ");
         return Console.ReadLine();
@@ -35,7 +35,7 @@ public class Display
         Print(message, false);
     }
 
-    public ConsoleKeyInfo GetUserKey() => Console.ReadKey();
+    public static ConsoleKeyInfo GetUserKey() => Console.ReadKey();
 
     public bool GetUserValidation(string message)
     {

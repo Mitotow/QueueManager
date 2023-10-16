@@ -18,7 +18,7 @@ public class Read : ICommand
     
     public void OnCommand()
     {
-        Queue<Person> queue = Manager.GetQueue();
+        var queue = Manager.GetQueue();
         if (queue.ElementAtOrDefault(0) is null)
         {
             Display.Print("Nobody in queue.");

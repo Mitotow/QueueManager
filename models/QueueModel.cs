@@ -4,26 +4,26 @@ namespace QueueManager.models;
 
 public class QueueModel
 {
-    private Queue<Person> Queue;
-    private static QueueModel? Manager = null;
-    
-    protected QueueModel()
+    private Queue<Person> _queue;
+    private static QueueModel? _manager;
+
+    private QueueModel()
     {
-        Queue = new Queue<Person>();
+        _queue = new Queue<Person>();
     }
 
     public static QueueModel GetInstance()
     {
-        return Manager ??= new QueueModel();
+        return _manager ??= new QueueModel();
     }
 
     public Queue<Person> GetQueue()
     {
-        return Queue;
+        return _queue;
     }
 
     public void Remove(int index)
     {
-        Queue = new Queue<Person>(Queue.Where(p => p != Queue.ElementAt(index)));
+        _queue = new Queue<Person>(_queue.Where(p => p != _queue.ElementAt(index)));
     }
 }

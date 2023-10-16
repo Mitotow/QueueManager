@@ -1,4 +1,3 @@
-using System.ComponentModel;
 using QueueManager.interfaces;
 using QueueManager.models;
 using QueueManager.views;
@@ -29,21 +28,16 @@ public class DelPerson : ICommand
         Display.Print("==== Queue ====");
         Display.PrintQueue(queue);
         Display.Print("\nChose a person by index :", false);
-        string? input = Display.GetUserInput();
+        var input = Display.GetUserInput();
         if (input == null) return;
         int index;
         try
         {
-            index = Int16.Parse(input);
+            index = short.Parse(input);
         }
-        catch (FormatException e)
+        catch (Exception)
         {
-            Display.Print($"{input} is not a number.");
-            return;
-        }
-        catch (OverflowException e)
-        {
-            Display.Print($"{input} is too high.");
+            Display.Print($"{input} is an invalid input (or maybe to high)");
             return;
         }
 

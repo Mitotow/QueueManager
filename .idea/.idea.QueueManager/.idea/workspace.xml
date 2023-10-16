@@ -8,10 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fa7df29-ebee-4620-8e71-4dda7d3fb1f3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/Quit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.QueueManager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QueueManager/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AppManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/Del.cs" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Del.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/DelPerson.cs" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/DelPerson.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/Quit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Quit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/Read.cs" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/Read.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/QueueModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/models/QueueModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/Display.cs" beforeDir="false" afterPath="$PROJECT_DIR$/views/Display.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,6 +87,7 @@
       <updated>1697463809795</updated>
       <workItem from="1697463811939" duration="405000" />
       <workItem from="1697465246378" duration="2976000" />
+      <workItem from="1697481766202" duration="762000" />
     </task>
     <servers />
   </component>
