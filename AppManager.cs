@@ -7,8 +7,8 @@ public class AppManager
 {
     private readonly Display _display;
     private readonly Dictionary<string, ICommand> _commands = new();
-    private readonly ConsoleKey[] _validKeys = { ConsoleKey.D1, ConsoleKey.D2, ConsoleKey.D3, ConsoleKey.D4, ConsoleKey.D5, ConsoleKey.D6, ConsoleKey.D7, ConsoleKey.D8 };
-
+    private readonly ConsoleKey[] _menuKeys = { ConsoleKey.DownArrow, ConsoleKey.UpArrow, ConsoleKey.Enter };
+    private bool Stop = false;
     
     public AppManager(Display display)
     {
@@ -29,11 +29,16 @@ public class AppManager
     {
         _commands.Add(command.Name, command);
     }
+
+    public void Quit()
+    {
+        Stop = true;
+        _display.Print("Goodbye !");
+    }
     
     public void Manage()
     {
-        var loop = true;
-        while (loop)
+        while (!Stop)
         {
             var cmd = "";
             var cmdsName = CmdsName(); // List of commands name
@@ -41,22 +46,37 @@ public class AppManager
             {
                 _display.MainMenu(cmdsName); // Display main menu
                 ConsoleKeyInfo read = _display.GetUserKey(); // Get user key pressed
-                if (read.Key == ConsoleKey.D0) { loop = false; break; } // Leave when escape pressed
-                int index = _validKeys.ToList().IndexOf(read.Key); // Searching for key typed in validkeys array
-                if (index < 0) continue; // Key not in valid keys
-                try { cmd = cmdsName.ToList()[index]; } // Try to find cmd in commands name list
-                catch(ArgumentOutOfRangeException) { Console.WriteLine("test");continue; } // Command name not found
+                if(_menuKeys.ToList().IndexOf(read.Key) != -1)
+                {
+                    if (read.Key is ConsoleKey.UpArrow)
+                    {
+                        if (_display.SelectedCommand == 0) _display.SelectedCommand = cmdsName.Length - 1;
+                        else _display.SelectedCommand--;
+                        continue;
+                    }
+                    
+                    if(read.Key is ConsoleKey.DownArrow)
+                    {
+                        if (_display.SelectedCommand == cmdsName.Length - 1) _display.SelectedCommand = 0;
+                        else _display.SelectedCommand++;
+                        continue;
+                    }
+                    
+                    if (read.Key is ConsoleKey.Enter)
+                    {
+                        try { cmd = cmdsName.ToList()[_display.SelectedCommand]; } // Try to find cmd in commands name list
+                        catch(ArgumentOutOfRangeException) { _display.Print("Error when starting command"); } // Command name not found
+                    }
+                }
                 break; // Everything work fine, leave loop
             }
             var command = GetCommand(cmd);
             command?.OnCommand();
-            if (command is not null)
+            if (command is not null && !Stop)
             {
                 _display.Print("\nPress a key to continue", false);
                 _display.GetUserKey();
             }
         }
-
-        _display.Print("Goodbye !");
     }
 }

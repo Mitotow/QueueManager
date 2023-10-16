@@ -8,5 +8,6 @@ manager.RegisterCommand(new Add(display));
 manager.RegisterCommand(new Del(display));
 manager.RegisterCommand(new DelPerson(display));
 manager.RegisterCommand(new Read(display));
+manager.RegisterCommand(new Quit(display, manager));
 
 manager.Manage();

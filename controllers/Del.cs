@@ -26,13 +26,12 @@ public class Del : ICommand
         }
     
         Display.Print("Are you sure ? Y/n");
-        ConsoleKeyInfo read = Display.GetUserKey();
-        if (read.Key is ConsoleKey.Enter or ConsoleKey.Y)
+        bool del = Display.GetUserValidation("Are you sure ?");
+        if (del)
         {
             var person = queue.First();
             queue.Dequeue();
             Display.Print($"{person} has been removed from queue.");
-        } else 
-            Display.Print("Nobody has been removed from queue.");
+        } else Display.Print("Nobody has been removed from queue.");
     }
 }

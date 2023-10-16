@@ -1,15 +1,16 @@
+using System.Windows.Input;
 using QueueManager.models;
 
 namespace QueueManager.views;
 
 public class Display
 {
+    public int SelectedCommand = 0;
     public void MainMenu(string[] cmdsName)
     {
         string message = "===== Queue Manager =====\n";
         for (var i = 0; i < cmdsName.Length; i++)
-            message += $"{i+1}. {cmdsName[i]}\n";
-        message += "0. Quit\n";
+            message += (i == SelectedCommand ? "--> " : "    ") + $"{cmdsName[i]}\n";
         Print(message);
     }
 
@@ -35,4 +36,17 @@ public class Display
     }
 
     public ConsoleKeyInfo GetUserKey() => Console.ReadKey();
+
+    public bool GetUserValidation(string message)
+    {
+        Print(message + " [Y/n]", true);
+        ConsoleKeyInfo read = Console.ReadKey();
+        switch (read.Key)
+        {
+            case ConsoleKey.N:
+                return false;
+            default:
+                return true;
+        }
+    }
 }
